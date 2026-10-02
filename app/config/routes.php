@@ -74,7 +74,7 @@ $router->get('status', 'MigrationController::status');
 
 $router->options('/api/login', 'ApiController::options');
 $router->options('/api/products', 'ApiController::options');
-$router->options('/api/products/(:num)', 'ApiController::options');
+$router->options('/api/products/{id}', 'ApiController::options');
 $router->post('/api/login', 'ApiController::login');
 
 $router->post('/api/create', 'ApiController::create');
