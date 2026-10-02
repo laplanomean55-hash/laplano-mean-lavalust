@@ -3,9 +3,20 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 class ApiController extends Controller
 {
-    public function __construct()
+   public function __construct()
     {
         parent::__construct();
+        
+        // CORS Headers
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
+        // Handle preflight OPTIONS request
+        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+            exit(0);
+        }
+
         $this->call->library('api');
         $this->call->model('ProductModel');
     }
