@@ -73,6 +73,7 @@ $router->get('status', 'MigrationController::status');
 // API Routes
 
 $router->options('/api/login', 'ApiController::options');
+$router->options('/api/products', 'ApiController::options');
 $router->post('/api/login', 'ApiController::login');
 
 $router->post('/api/create', 'ApiController::create');
