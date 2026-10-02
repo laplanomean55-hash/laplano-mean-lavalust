@@ -204,7 +204,7 @@ class Api
             show_error('jwt_secret and refresh_token_key must be different values.');
         }
 
-        handle_cors();
+        $this->handle_cors();
     }
 
     /**
@@ -230,6 +230,29 @@ class Api
             show_error("{$name} has too little entropy. Use a random value.");
         }
     }
+
+    public function handle_cors()
+{
+    $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+
+    if (is_array($this->allow_origin)) {
+        $allowed = in_array($origin, $this->allow_origin, true);
+    } else {
+        $allowed = $this->allow_origin === '*' || $this->allow_origin === $origin;
+    }
+
+    if ($allowed && $origin) {
+        header("Access-Control-Allow-Origin: $origin");
+        header('Access-Control-Allow-Credentials: true');
+    } elseif ($this->allow_origin === '*') {
+        header('Access-Control-Allow-Origin: *');
+    }
+
+    header('Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With, X-RateLimit-*');
+    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    header('Access-Control-Max-Age: 3600');
+    header('Content-Type: application/json; charset=UTF-8');
+}
 
     /**
      * API body
