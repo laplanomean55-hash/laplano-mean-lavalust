@@ -99,9 +99,9 @@ $config['refresh_token_key'] = '0bNvxjPFJ6dhi1Ttf7AStp95zUcd1iy94mjblklwfPs';
 $config['allow_origin'] = [
     'https://api-tester.marasigan.dev',
     'http://localhost:5173',
-    'http://localhost:5174'
+    'http://localhost:5174',
+    'https://lab6-frontend-jfdf.onrender.com'
 ];
-
 /*
 |--------------------------------------------------------------------------
 | Refresh Token Table
