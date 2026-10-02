@@ -3,12 +3,14 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 class ProductController extends Controller {
 
-    public function __construct() {
+   public function __construct() {
         parent::__construct();
-
+        $this->call->library('api');
         $this->call->model('ProductModel');
+        
+        // I-enable ang CORS para sa lahat ng requests
+        $this->api->with_cors('*');
     }
-
     public function index() {
         $data['products'] = $this->ProductModel->all();
 

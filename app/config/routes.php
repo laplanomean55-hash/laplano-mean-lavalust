@@ -71,6 +71,8 @@ $router->get('rollback-all', 'MigrationController::rollback_all');
 $router->get('refresh', 'MigrationController::refresh');
 $router->get('status', 'MigrationController::status');
 // API Routes
+
+$router->options('/api/login', 'ApiController::options');
 $router->post('/api/login', 'ApiController::login');
 
 $router->post('/api/create', 'ApiController::create');

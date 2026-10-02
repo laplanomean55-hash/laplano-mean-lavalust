@@ -22,6 +22,15 @@ class ApiController extends Controller
         $this->call->model('ProductModel');
     }
 
+    public function options()
+{
+    header("Access-Control-Allow-Origin: https://lab6-frontend-jfdf.onrender.com");
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+    http_response_code(200);
+    exit();
+}
+
     // CREATE USER
     public function create()
     {
